@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fluff Games</title>
+  <style>
+    html {
+    height: 125%;
+}
+    body {
+      margin: 0;
+      padding: 0;
+    background-image: linear-gradient(#e7e7e7,rgb(150, 161, 163))
+    }  
+    
+    #fixed-text {
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			text-align: center;
+			background-color: #ffffff00;
+			padding: 10px;
+			font-size: 28px;
+			font-weight: bold;
+      z-index: 10;
+      font-family: 'Dosis', sans-serif;
+      color: #050505;
+		}
+
+    .button-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      font-family: 'Dosis', sans-serif;
+    }
+    
+    .button {
+      width: 200px;
+      height: 200px;
+      margin: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: #f7fffe48;
+      box-shadow: 0px 0px 10px #999;
+      transition: all 0.2s ease-in-out;
+      border-radius: 30px;
+    }
+    
+    .button:hover {
+      box-shadow: 0px 0px 20px #999;
+    }
+    
+    .button:hover .popup {
+      display: block;
+    }
+    
+    .popup {
+      display: none;
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px #999;
+      border-radius: 9px;
+      width: 100px;
+    }
+    
+    .button img {
+      width: 130px;
+      height: 130px;
+      margin-bottom: 10px;
+      border-radius: 11px;
+    }
+
+    canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+#title-text{
+			left: 0;
+			right: 0;
+			text-align: center;
+			background-color: #ffffff00;
+			padding: 10px;
+			font-size: 68px;
+			font-weight: bold;
+      z-index: 10;
+      font-family: 'Dosis', sans-serif;
+      color: #f2feffb2;
+      outline-style: solid;
+}
+  </style>
+</head>
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<body>
+  <div id="title-text">Fluff Games</div>
+  <div id="fixed-text">Games shown on this website are the property of their respective owners. (Discord: APandawithagun#7600)</div>
+    <canvas></canvas>
+    <div class="button-container">
+        <div class="button" onclick="window.location.href='gs/timeshooter.html'">
+          <img src="logos/timeshooter.jpg" alt="Button 1">
+          <span>Time Shooter 3 S.W.A.T</span>
+          <div class="popup">Time Shooter 3 S.W.A.T</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/bitlife.html'">
+          <img src="logos/bitlife.jpg" alt="Button 2">
+          <span>Bitlife</span>
+          <div class="popup">Bitlife</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/1v1lol.html'">
+          <img src="logos/1v1LOL.webp" alt="Button 3">
+          <span>1v1.LOL</span>
+          <div class="popup">1v1.lol</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/Slope.html'">
+          <img src="logos/slope.jpg" alt="Button 4">
+          <span>Slope</span>
+          <div class="popup">Slope</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/getawayshootout.html'">
+          <img src="logos/getawayshootout.jpg" alt="Button 5">
+          <span>getawayshootout</span>
+          <div class="popup">GetAwayShootout</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/madalinstunt2.html'">
+          <img src="logos/madalinstunt2.jpg" alt="Button 6">
+          <span>Madalin Stunt Cars 2</span>
+          <div class="popup">Madalin Stunt Cars</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/funnyshooter.html'">
+          <img src="logos/funnyshooter.png" alt="Button 7">
+          <span>Funny Shooter</span>
+          <div class="popup">HeheHAhA Funny</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/subwaysurfer.html'">
+          <img src="logos/subwaysurfers.png" alt="Button 8">
+          <span>Subway Surfers</span>
+          <div class="popup">Run from Police</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/mc1.5.2.html'">
+          <img src="logos/mc1.5.2.jpg" alt="Button 9">
+          <span>Minecraft 1.5.2</span>
+          <div class="popup">Minecraft Singleplayer ONG</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/mc1.8.8.html'">
+          <img src="logos/mc1.8.8.jpg" alt="Button 9">
+          <span>Minecraft 1.8.8</span>
+          <div class="popup">Minecraft Multiplayer ONG</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/jetpackjoyride.html'">
+          <img src="logos/jetpackjoyride.png" alt="Button 10">
+          <span>Jetpack Joyride</span>
+          <div class="popup">Murder people on a Jetpack</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/tunnelrush.html'">
+          <img src="logos/tunnelrush.jpg" alt="Button 11">
+          <span>Tunnel Rush</span>
+          <div class="popup">Be In Tunnel</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/basketballrandom.html'">
+          <img src="logos/basketballrandom.png" alt="Button 12">
+          <span>BasketBall Random</span>
+          <div class="popup">Shoot Ball with bad control</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/2048multi.html'">
+          <img src="logos/2048.png" alt="Button 13">
+          <span>2048 Multi-Task</span>
+          <div class="popup">2048 but Hard</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/baldisbasics.html'">
+          <img src="logos/baldibasic.webp" alt="Button 14">
+          <span>Baldi's Basics</span>
+          <div class="popup">Every Teacher in 1900s</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/cookieclicker.html'">
+          <img src="logos/cookieclicker.png" alt="Button 15">
+          <span>Cookie Clicker</span>
+          <div class="popup">Click a Cookie</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/dealornodeal.html'">
+          <img src="logos/dealornodeal.jpg" alt="Button 16">
+          <span>Deal Or No Deal</span>
+          <div class="popup">Just Gamble</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/crossyroad.html'">
+          <img src="logos/crossyroad.png" alt="Button 17">
+          <span>Crossy Road</span>
+          <div class="popup">Why did the Chicken cross the road?</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/ducklife.html'">
+          <img src="logos/ducklife.jpg" alt="Button 18">
+          <span>Duck Life 3</span>
+          <div class="popup">3rd Is Best</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/justfall.html'">
+          <img src="logos/justfall.png" alt="Button 19">
+          <span>Just Fall</span>
+          <div class="popup">Great Value Fall Guys</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/smashkarts.html'">
+          <img src="logos/smashkarts.png" alt="Button 20">
+          <span>Smash Karts</span>
+          <div class="popup">MarioKart Rip-Off</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/templerun.html'">
+          <img src="logos/templerun.webp" alt="Button 21">
+          <span>Temple Run</span>
+          <div class="popup">Run from Monke</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/stack.html'">
+          <img src="logos/stack.png" alt="Button 22">
+          <span>Stack</span>
+          <div class="popup">Stack some Blocks</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/rooftopsnipers.html'">
+          <img src="logos/rootopsnipers.jpg" alt="Button 23">
+          <span>Rooftop Snipers</span>
+          <div class="popup">literraly getawayshootout</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/clusterrush.html'">
+          <img src="logos/clusterrush.jpg" alt="Button 24">
+          <span>Cluster Rush</span>
+          <div class="popup">Illegally Parkour on Trucks</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/drifthunter.html'">
+          <img src="logos/drift-hunters.png" alt="Button 25">
+          <span>Drift Hunters (NOT WORKING)</span>
+          <div class="popup">Its Drifting Time >:D</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/precisionclient.html'">
+          <img src="logos/precision.webp" alt="Button 26">
+          <span>Precision Client</span>
+          <div class="popup">Runs Faster, And Mods</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/gimmetheairpod.html'">
+          <img src="logos/gimmeairpod.png" alt="Button 27">
+          <span>Gimme The Airpod</span>
+          <div class="popup">Friend fight for the Airpod</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/doodlejump.html'">
+          <img src="logos/doodlejump.png" alt="Button 28">
+          <span>Doodle Jump</span>
+          <div class="popup">Jump on stuff idk</div>
+        </div>
+        <div class="button" onclick="window.location.href='gs/fireandice.html'">
+          <img src="logos/fireandice.png" alt="Button 29">
+          <span>A Dance Of Fire And Ice</span>
+          <div class="popup">Rythm Osu-Like Game</div>
+        </div>
+      </div> 
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dosis:wght@700&display=swap" rel="stylesheet">     
+<script>
+    // add class to search container after 700ms to trigger animation
+    setTimeout(function () {
+      document.querySelector(".search-container").classList.add("fade-in");
+    }, 700);
+  </script>
+  <script>
+    const canvas = document.querySelector("canvas");
+    const ctx = canvas.getContext("2d");
+
+    // Set canvas dimensions
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // Define particle properties
+    const particles = [];
+    const numParticles = 70;
+    const maxRadius = 50;
+    const minRadius = 10;
+    const maxSpeed = 2;
+    const minSpeed = 0.1;
+    const maxOpacity = 0.5;
+    const minOpacity = 0.1;
+
+    // Create particles
+    for (let i = 0; i < numParticles; i++) {
+      const radius = Math.floor(
+        Math.random() * (maxRadius - minRadius + 1) + minRadius
+      );
+      const x = Math.random() * (canvas.width - radius * 2) + radius;
+      const y = Math.random() * (canvas.height - radius * 2) + radius;
+      const dx = (Math.random() - 0.5) * (maxSpeed - minSpeed);
+      const dy = (Math.random() - 0.5) * (maxSpeed - minSpeed);
+      const opacity =
+        Math.random() * (maxOpacity - minOpacity) + minOpacity;
+      const color = `rgba(255, 255, 255, ${opacity})`;
+
+      particles.push({
+        x,
+        y,
+        radius,
+        dx,
+        dy,
+        color,
+      });
+    }
+
+    // Draw particles
+    function drawParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((particle) => {
+        ctx.beginPath();
+        ctx.arc(
+          particle.x,
+          particle.y,
+          particle.radius,
+          0,
+          Math.PI * 2,
+          false
+        );
+        ctx.fillStyle = particle.color;
+        ctx.fill();
+
+        // Update particle position
+        particle.x += particle.dx;
+        particle.y += particle.dy;
+
+        // Bounce off walls
+        if (
+          particle.x + particle.radius > canvas.width ||
+          particle.x - particle.radius < 0
+        ) {
+          particle.dx = -particle.dx;
+        }
+
+        if (
+          particle.y + particle.radius > canvas.height ||
+          particle.y - particle.radius < 0
+        ) {
+          particle.dy = -particle.dy;
+        }
+      });
+
+      requestAnimationFrame(drawParticles);
+    }
+
+    drawParticles();
+  </script>
+</body>
+</html>

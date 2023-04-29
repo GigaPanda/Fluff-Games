@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cookie Clicker</title>
+	<style>
+            html {
+    height: 100%;
+}
+		body {
+			margin: 0;
+			padding: 0;
+			background: linear-gradient(to bottom, #ffffff,rgb(167, 178, 180));
+		}
+		
+        .container {
+  padding: 20px;
+  background: rgba(218, 223, 223, 0.76);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 2000px; /* Optional: set a max-width to limit the container width */
+}
+
+		
+		iframe {
+			display: block;
+			width: 100%;
+			height: 1140px;
+            border-radius: 30px;
+		}
+		
+		.text {
+			font-family: Verdana, sans-serif;
+			font-size: 18px;
+			line-height: 1.5;
+			padding: 20px 0;
+			text-align: center;
+		}
+
+        canvas {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+	</style>
+</head>
+<body>
+    <canvas></canvas>
+	<div class="container">
+		<iframe src="https://rawcdn.githack.com/lioxryt/lioxryt-assets/a4041fc9b45936f148d3d7134977d5df4329e237/other/cookie/index.html"></iframe>
+		<div class="text">Cookie Clicker</div>
+	</div>
+    <script>
+        // add class to search container after 700ms to trigger animation
+        setTimeout(function () {
+          document.querySelector(".search-container").classList.add("fade-in");
+        }, 700);
+      </script>
+      <script>
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext("2d");
+    
+        // Set canvas dimensions
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    
+        // Define particle properties
+        const particles = [];
+        const numParticles = 70;
+        const maxRadius = 50;
+        const minRadius = 10;
+        const maxSpeed = 2;
+        const minSpeed = 0.1;
+        const maxOpacity = 0.5;
+        const minOpacity = 0.1;
+    
+        // Create particles
+        for (let i = 0; i < numParticles; i++) {
+          const radius = Math.floor(
+            Math.random() * (maxRadius - minRadius + 1) + minRadius
+          );
+          const x = Math.random() * (canvas.width - radius * 2) + radius;
+          const y = Math.random() * (canvas.height - radius * 2) + radius;
+          const dx = (Math.random() - 0.5) * (maxSpeed - minSpeed);
+          const dy = (Math.random() - 0.5) * (maxSpeed - minSpeed);
+          const opacity =
+            Math.random() * (maxOpacity - minOpacity) + minOpacity;
+          const color = `rgba(255, 255, 255, ${opacity})`;
+    
+          particles.push({
+            x,
+            y,
+            radius,
+            dx,
+            dy,
+            color,
+          });
+        }
+    
+        // Draw particles
+        function drawParticles() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+          particles.forEach((particle) => {
+            ctx.beginPath();
+            ctx.arc(
+              particle.x,
+              particle.y,
+              particle.radius,
+              0,
+              Math.PI * 2,
+              false
+            );
+            ctx.fillStyle = particle.color;
+            ctx.fill();
+    
+            // Update particle position
+            particle.x += particle.dx;
+            particle.y += particle.dy;
+    
+            // Bounce off walls
+            if (
+              particle.x + particle.radius > canvas.width ||
+              particle.x - particle.radius < 0
+            ) {
+              particle.dx = -particle.dx;
+            }
+    
+            if (
+              particle.y + particle.radius > canvas.height ||
+              particle.y - particle.radius < 0
+            ) {
+              particle.dy = -particle.dy;
+            }
+          });
+    
+          requestAnimationFrame(drawParticles);
+        }
+    
+        drawParticles();
+      </script>
+</body>
+</html>
